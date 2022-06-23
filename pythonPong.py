@@ -15,6 +15,11 @@ win.bgcolor("cadetblue")
 win.setup(width=800, height=600)
 win.tracer(0)
 
+# score
+scoreL = 0
+scoreR = 0
+
+
 
 # Paddle A
 paddle_a = turtle.Turtle()
@@ -45,6 +50,13 @@ ball.dx = 2
 ball.dy = -2
 
 
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0,260)
+pen.write("player L: 0 Player R: 0", align= "center", font=("courier",24, "normal"))
 
 # Function
 def paddle_a_up():
@@ -99,11 +111,18 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0,0)
         ball.dx *= -1
+        scoreL += 1
+        pen.clear()
+        pen.write(f"player L: {scoreL} Player R: {scoreR}", align="center", font=("courier", 24, "normal"))
+
+
 
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
-
+        scoreR += 1
+        pen.clear()
+        pen.write(f"player L: {scoreL} Player R: {scoreR}", align="center", font=("courier", 24, "normal"))
 # collide ball with paddle
     if (ball.xcor() > 340 and ball.xcor() < 350 and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50)):
         ball.setx(340)
@@ -112,6 +131,8 @@ while True:
     if (ball.xcor() < -340 and ball.xcor() > -350 and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50)):
         ball.setx(-340)
         ball.dx *= -1
+
+
 
 
 
