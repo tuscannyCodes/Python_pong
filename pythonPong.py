@@ -8,6 +8,7 @@
 
 
 import turtle
+import os
 
 win = turtle.Screen()
 win.title("Pong by TuscannyCodes")
@@ -52,7 +53,7 @@ ball.dy = -2
 
 pen = turtle.Turtle()
 pen.speed(0)
-pen.color("white")
+pen.color("coral")
 pen.penup()
 pen.hideturtle()
 pen.goto(0,260)
@@ -103,10 +104,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        os.system("afplay bounce.wav&")
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        os.system("afplay bounce.wav&")
 
     if ball.xcor() > 390:
         ball.goto(0,0)
@@ -127,10 +130,12 @@ while True:
     if (ball.xcor() > 340 and ball.xcor() < 350 and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50)):
         ball.setx(340)
         ball.dx *= -1
+        os.system("afplay bounce.wav&")
 
     if (ball.xcor() < -340 and ball.xcor() > -350 and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() - 50)):
         ball.setx(-340)
         ball.dx *= -1
+        os.system("afplay bounce.wav&")
 
 
 
